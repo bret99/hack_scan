@@ -14,6 +14,8 @@ Prerequisites:
 4. Zoomeye API key
 5. Nmap preinstalled
 
+One may change Nmap command in access_tokens.py. All API keys should also be located there.
+
 One should keep in mind that some providers may block API requests for some reason. Especially it is actual for Zoomeye as well.
 
 Command to run: python3 hack_scan.py.
