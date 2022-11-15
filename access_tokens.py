@@ -1,0 +1,6 @@
+censys_api_id = "c"
+censys_secret_key = ""
+criminalip_key = ""
+shodan_key = ""
+zoomeye_key = ""
+nmap_command = "nmap --script vulners -A"
