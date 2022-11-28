@@ -9,7 +9,7 @@ from nmap_hack import nmap_hack
 def main_menu():
     try:
         print(
-            "\033[1;90m\nHack Scanner \033[1;00mmodules:\n\n[\033[1;90m1\033[1;00m] \033[1;93mCensys\n\033[1;00m[\033[1;90m2\033[1;00m] \033[1;96mCriminalIP\n\033[1;00m[\033[1;90m3\033[1;00m]\033[1;91m Shodan\n\033[1;00m[\033[1;90m4\033[1;00m] \033[1;94mZoomeye\n\033[1;00m[\033[1;90m5\033[1;00m] Nmap\033[1;00m\n[\033[1;90m99\033[1;00m] \033[1;90mExit\033[1;00m\n"
+            "\033[1;90m\nHack Scanner \033[1;00mmodules:\n\n[\033[1;90m1\033[1;00m] Get \033[1;90mCensys\033[1;00m report\n[\033[1;90m2\033[1;00m] Get \033[1;90mCriminalIP\033[1;00m report\n[\033[1;90m3\033[1;00m] Get \033[1;90mShodan\033[1;00m report\n[\033[1;90m4\033[1;00m] Get \033[1;90mZoomeye\033[1;00m report\n[\033[1;90m5\033[1;00m] Get \033[1;90mNmap\033[1;00m report\n[\033[1;90m99\033[1;00m] \033[1;90mExit\033[1;00m\n"
         )
         choose_module = input("Enter module number: ")
         if choose_module == "1":
