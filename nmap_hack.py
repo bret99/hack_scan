@@ -18,7 +18,7 @@ def nmap_hack():
                 print("\n==========================================================================================")
         for threads in threads_list:
             threads.join()
-        
+
         print("\nOne can find reports in \033[1;95m{}/reports/nmap/*_nmap_report.txt\033[1;00m\n".format(os.getcwd()))
 
     except FileNotFoundError:
@@ -26,6 +26,15 @@ def nmap_hack():
         print("\nOne can find report in \033[1;95m{0}/reports/nmap/{1}_nmap_report.txt\033[1;00m\n".format(os.getcwd(), IPs_input))
     except KeyboardInterrupt:
         sys.exit("\n")
+
+    os.chdir("{}/reports/nmap".format(os.getcwd()))
+    for item in os.listdir("."):
+        try:
+            with open(item) as file_out:
+                if len(file_out.readlines()) <= 3:
+                    os.remove(item)
+        except (UnicodeDecodeError, IsADirectoryError):
+            pass
 
 def IP_to_scan(IPs_input):
     try:
