@@ -32,16 +32,16 @@ def IPs_to_scan(IPs_input):
                 count = 0
                 while count <= len(json_object["port"]["data"]):
                     try:
-                        items_to_print.append("\033[1;94mport\033[1;00m: \033[1;92m" + str(json_object["port"]["data"][count]["open_port_no"]) + " \033[1;94mservice\033[1;00m: \033[1;92m" + json_object["port"]["data"][count]["app_name"] + " \033[1;94mversion\033[1;00m: \033[1;92m" + json_object["port"]["data"][count]["app_version"] + " \033[1;94mtransport\033[1;00m: \033[1;92m" + json_object["port"]["data"][count]["socket"] + "\033[1;00m")
-                        items_for_short_report_set.add("port: " + str(json_object["port"]["data"][count]["open_port_no"]) + " service: " + json_object["port"]["data"][count]["app_name"] + " version: " + json_object["port"]["data"][count]["app_version"] + " transport: " + json_object["port"]["data"][count]["socket"])
+                        items_to_print.append("\033[1;94mport\033[1;00m: \033[1;92m" + str(json_object["port"]["data"][count]["open_port_no"]) + " \033[1;94mservice\033[1;00m: \033[1;92m" + str(json_object["port"]["data"][count]["app_name"]) + " \033[1;94mversion\033[1;00m: \033[1;92m" + str(json_object["port"]["data"][count]["app_version"]) + " \033[1;94mtransport\033[1;00m: \033[1;92m" + str(json_object["port"]["data"][count]["socket"]) + "\033[1;00m")
+                        items_for_short_report_set.add("port: " + str(json_object["port"]["data"][count]["open_port_no"]) + " service: " + str(json_object["port"]["data"][count]["app_name"]) + " version: " + str(json_object["port"]["data"][count]["app_version"]) + " transport: " + str(json_object["port"]["data"][count]["socket"]))
                     except IndexError:
                         pass
                     count += 1
                 for item in set(items_to_print):
                     print(item)
                 items_for_short_report = list(items_for_short_report_set)
-                print("\033[1;94mcountry\033[1;00m:\033[1;92m", json_object["whois"]["data"][0]["org_country_code"], "\n\033[1;94mcity\033[1;00m:\033[1;92m", json_object["whois"]["data"][0]["city"], "\n\033[1;94mlatitude\033[1;00m:\033[1;92m", json_object["whois"]["data"][0]["latitude"], "\n\033[1;94mlongitude\033[1;00m:\033[1;92m", json_object["whois"]["data"][0]["longitude"], "\n\033[1;94misp\033[1;00m:\033[1;92m", json_object["whois"]["data"][0]["org_name"], "\033[1;00m")
-                items_for_short_report.append("country: " + json_object["whois"]["data"][0]["org_country_code"] + "\ncity: " + json_object["whois"]["data"][0]["city"] + "\nlatitude: " + str(json_object["whois"]["data"][0]["latitude"]) + "\nlongitude: " + str(json_object["whois"]["data"][0]["longitude"]) + "\nisp: " + json_object["whois"]["data"][0]["org_name"])
+                print("\033[1;94mcountry\033[1;00m:\033[1;92m", str(json_object["whois"]["data"][0]["org_country_code"]), "\n\033[1;94mcity\033[1;00m:\033[1;92m", str(json_object["whois"]["data"][0]["city"]), "\n\033[1;94mlatitude\033[1;00m:\033[1;92m", str(json_object["whois"]["data"][0]["latitude"]), "\n\033[1;94mlongitude\033[1;00m:\033[1;92m", str(json_object["whois"]["data"][0]["longitude"]), "\n\033[1;94misp\033[1;00m:\033[1;92m", str(json_object["whois"]["data"][0]["org_name"]), "\033[1;00m")
+                items_for_short_report.append("country: " + str(json_object["whois"]["data"][0]["org_country_code"]) + "\ncity: " + str(json_object["whois"]["data"][0]["city"]) + "\nlatitude: " + str(json_object["whois"]["data"][0]["latitude"]) + "\nlongitude: " + str(json_object["whois"]["data"][0]["longitude"]) + "\nisp: " + str(json_object["whois"]["data"][0]["org_name"]))
                 domains_counter = 0
                 if len(json_object["domain"]["data"]) == 0:
                     print("\033[1;94mdomains\033[1;00m: \033[;00m[]")
