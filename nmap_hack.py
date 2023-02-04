@@ -11,8 +11,8 @@ def nmap_hack():
         IPs_input = input("Enter IP or path to file with IPs to be scanned: ")
         with open(IPs_input) as IPs_to_scan:
             for IP in IPs_to_scan.readlines():
-                print("\n\033[1;95m{}\033[1;00m".format(IP.rstrip()))
-                thread = multiprocessing.Process(target=IP_to_scan(IP.rstrip()))
+                print("\n\033[1;95m{}\033[1;00m".format(IP.strip()))
+                thread = multiprocessing.Process(target=IP_to_scan(IP.strip()))
                 threads_list.append(thread)
                 thread.start()
                 print("\n==========================================================================================")
