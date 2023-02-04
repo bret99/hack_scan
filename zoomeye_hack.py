@@ -25,7 +25,7 @@ def IPs_to_scan(IPs_input):
         for IP in IPs_to_scan.readlines():
             items_for_short_report = []
             try:
-                print("\n\033[1;95m{}\033[1;00m\n".format(IP.rstrip()))
+                print("\n\033[1;95m{}\033[1;00m\n".format(IP.strip()))
                 json_object = requests.get("https://api.zoomeye.org/host/search?query=ip:{}".format(IP.strip()), headers=headers).json()
                 count = 0
                 while count < len(json_object["matches"]):
@@ -50,11 +50,11 @@ def IPs_to_scan(IPs_input):
                 if not os.path.exists("{}/reports/zoomeye".format(os.getcwd())):
                     os.mkdir("{}/reports/zoomeye".format(os.getcwd()))
                 
-                with open("{0}/reports/zoomeye/{1}_full_report.json".format(os.getcwd(), IP.rstrip()), "w") as outfile:
+                with open("{0}/reports/zoomeye/{1}_full_report.json".format(os.getcwd(), IP.strip()), "w") as outfile:
                     outfile.write(json_object_to_json_file)
 
                 with open("{}/reports/zoomeye/short_report.txt".format(os.getcwd()), "a") as outfile:
-                    outfile.write("\n[" + IP.rstrip() + "] =>\n")
+                    outfile.write("\n[" + IP.strip() + "] =>\n")
                     for line in items_for_short_report:
                         outfile.write(line + "\n")
 
@@ -63,8 +63,8 @@ def IPs_to_scan(IPs_input):
             print("\n==========================================================================================")
             time.sleep(2.0)
             
-            if os.path.exists("{0}/reports/zoomeye/{1}_full_report.json".format(os.getcwd(), IP.rstrip())):
-                full_report_list.append(IP.rstrip())
+            if os.path.exists("{0}/reports/zoomeye/{1}_full_report.json".format(os.getcwd(), IP.strip())):
+                full_report_list.append(IP.strip())
 
     if os.path.exists("{}/reports/zoomeye/short_report.txt".format(os.getcwd())):
         print("\nShort report located in \033[1;95m{}/reports/zoomeye/short_report.txt\033[1;00m\n".format(os.getcwd()))
