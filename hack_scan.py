@@ -11,7 +11,7 @@ def main_menu():
         print(
             "\033[1;90m\nHack Scanner \033[1;00mmodules:\n\n[\033[1;90m1\033[1;00m] Get \033[1;90mCensys\033[1;00m report\n[\033[1;90m2\033[1;00m] Get \033[1;90mCriminalIP\033[1;00m report\n[\033[1;90m3\033[1;00m] Get \033[1;90mShodan\033[1;00m report\n[\033[1;90m4\033[1;00m] Get \033[1;90mZoomeye\033[1;00m report\n[\033[1;90m5\033[1;00m] Get \033[1;90mNmap\033[1;00m report\n[\033[1;90m99\033[1;00m] \033[1;90mExit\033[1;00m\n"
         )
-        choose_module = input("Enter module number: ")
+        choose_module = input("Enter module number: ").strip()
         if choose_module == "1":
             censys_hack()
             main_menu()
