@@ -1,5 +1,4 @@
 import sys
-import os
 from censys_hack import censys_hack
 from criminalip_hack import criminalip_hack
 from shodan_hack import shodan_hack
