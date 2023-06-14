@@ -41,8 +41,8 @@ def IPs_to_scan(IPs_input):
                     items_for_short_report.append("country: " + str(json_object["matches"][0]["geoinfo"]["country"]["code"]) + "\ncity: " + str(json_object["matches"][0]["geoinfo"]["city"]["names"]["en"]) + "\nlatitude: " + str(json_object["matches"][0]["geoinfo"]["location"]["lat"]) + "\nlongitude: " + str(json_object["matches"][0]["geoinfo"]["location"]["lon"]) + "\nisp: " + str(json_object["matches"][0]["geoinfo"]["isp"]))
                 except IndexError:
                     pass
-#                except TypeError:
-#                    pass
+                except TypeError:
+                    pass
 
                 json_object_to_json_file = json.dumps(json_object, indent=4)
                 if not os.path.exists("{}/reports".format(os.getcwd())):
@@ -86,6 +86,8 @@ def IP_to_scan(IPs_input):
             count += 1
         try:
             print("\033[1;94mcountry\033[1;00m:\033[1;92m", str(json_object["matches"][0]["geoinfo"]["country"]["code"]), "\n\033[1;94mcity\033[1;00m:\033[1;92m", str(json_object["matches"][0]["geoinfo"]["city"]["names"]["en"]), "\n\033[1;94mlatitude\033[1;00m:\033[1;92m", str(json_object["matches"][0]["geoinfo"]["location"]["lat"]), "\n\033[1;94mlongitude\033[1;00m:\033[1;92m", str(json_object["matches"][0]["geoinfo"]["location"]["lon"]), "\n\033[1;94misp\033[1;00m:\033[1;92m", str(json_object["matches"][0]["geoinfo"]["isp"]), "\033[1;00m")
+        except TypeError:
+            pass
         except IndexError:
             print("\033[1;93mNo information available for that IP\033[1;00m")
 
