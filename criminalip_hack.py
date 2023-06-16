@@ -11,7 +11,7 @@ def criminalip_hack():
     if criminalip_key == "":
         sys.exit("\033[1;91m\nEmpty criminalip key!\033[1;00m")
     try:
-        IPs_input = input("Enter IP or path to file with IPs to be scanned: ")
+        IPs_input = input("Enter IP or path to file with IPs to be scanned: ").strip()
         IPs_to_scan(IPs_input)
     except FileNotFoundError:
         IP_to_scan(IPs_input)

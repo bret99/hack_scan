@@ -8,7 +8,7 @@ def nmap_hack():
         sys.exit("\033[1;91m\nEmpty Nmap command!\033[1;00m")
     try:
         threads_list = []
-        IPs_input = input("Enter IP or path to file with IPs to be scanned: ")
+        IPs_input = input("Enter IP or path to file with IPs to be scanned: ").strip()
         with open(IPs_input) as IPs_to_scan:
             for IP in IPs_to_scan.readlines():
                 print("\n\033[1;95m{}\033[1;00m".format(IP.strip()))
@@ -18,6 +18,11 @@ def nmap_hack():
                 print("\n==========================================================================================")
         for threads in threads_list:
             threads.join()
+    
+#        if not os.path.exists("{}/reports".format(os.getcwd())):
+#            os.mkdir("{}/reports".format(os.getcwd()))
+#        if not os.path.exists("{}/reports/nmap".format(os.getcwd())):
+#            os.mkdir("{}/reports/nmap".format(os.getcwd()))
 
     except FileNotFoundError:
         IP_to_scan(IPs_input)
