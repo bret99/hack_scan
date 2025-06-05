@@ -20,4 +20,4 @@ One should keep in mind that some providers may block API requests for some reas
 
 Command to run:
 ```
-python3 hack_scan.py.
+python3 hack_scan.py
