@@ -18,4 +18,6 @@ One may change Nmap command in access_tokens.py. All API keys should also be loc
 
 One should keep in mind that some providers may block API requests for some reason. Especially it is actual for Zoomeye as well.
 
-Command to run: python3 hack_scan.py.
+Command to run:
+```
+python3 hack_scan.py.
