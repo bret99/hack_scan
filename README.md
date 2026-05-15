@@ -1,29 +1,67 @@
-# hack_scan
-Absolutely ultimate investigation framework showing how hackers see IP/IPs.
+# hack_scan (Attack Surface Management Framework)
 
-It's gonna be very useful for organizations that have few (or one) public IPs/IP. This framework includes the most used investigation providers such as Censys, CriminalIP, Shodan, Zoomeye and Nmap (with vulners API provided default command).
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python Version](https://img.shields.io/badge/python-3.8%20%7C%203.9%20%7C%203.10%20%7C%203.11%20%7C%203.12-blue.svg)](https://www.python.org/)
 
-Finally one will see IPs/IP being investigated with hackers eyes.
+`hack_scan` is a zero-dependency, high-efficiency security reconnaissance and Attack Surface Management (ASM) framework designed to analyze public IP infrastructures through an adversarial lens. By consolidating threat intelligence data from premier OSINT providers and validating perimeter exposure with active scanning, `hack_scan` delivers actionable visibility into what threat actors can discover about your external assets.
 
-One should enter IP or path to a text file with IPs list (one IP per line).
+This tool is optimized for corporate security teams, network administrators, and compliance auditors managing a defined set of public-facing IP addresses.
 
-Prerequisites:
-1. Censys secret key and api id
-2. CriminalIP API key
-3. Shodan API key
-4. Zoomeye API key
-5. Nmap preinstalled
+## 🔍 Supported Intelligence Providers
 
-One may change Nmap command in access_tokens.py. All API keys should also be located there.
+The framework seamlessly aggregates data from top-tier cyber threat intelligence (CTI) platforms:
+- **Censys API**: Deep internet-wide scanning data and certificate tracking.
+- **CriminalIP API**: Real-time IP intelligence, threat scoring, and inbound/outbound risk profiling (10,000 free monthly requests).
+- **Shodan API**: Device, banner, and protocol enumeration.
+- **ZoomEye API**: Extensive cyberspace mapping and historical endpoint data.
+- **Nmap + Vulners NSE**: Active port verification mapped against the Vulners CVE database for direct vulnerability identification.
 
-One should keep in mind that some providers may block API requests for some reason. Especially it is actual for Zoomeye as well.
+## 🚀 Prerequisites
 
-Command to run:
+### System Dependencies
+An active installation of `nmap` along with standard NSE scripts is required:
+```bash
+# Ubuntu / Debian
+sudo apt-get update && sudo apt-get install -y nmap
+
+# macOS
+brew install nmap
 ```
+
+## 🛠️ Installation & Configuration
+
+1. **Clone the Repository:**
+   ```bash
+   git clone [https://github.com/bret99/hack_scan.git](https://github.com/bret99/hack_scan.git)
+   cd hack_scan
+   ```
+
+2. **Configure Access Tokens:**
+   Copy the template configuration file and populate it with your confidential API keys:
+   ```bash
+   cp access_tokens.py.template access_tokens.py
+   ```
+   Open `access_tokens.py` and supply your credentials:
+   ```python
+   censys_api_id = "your_censys_id"
+   censys_secret_key = "your_censys_secret"
+   criminalip_key = "your_criminalip_key" # 10000 requests per month for free members.
+   shodan_key = "your_shodan_key"
+   zoomeye_key = "your_zoomeye_key"
+
+   # Customize the default Nmap command execution layout
+   nmap_command = "nmap --script vulners -A"
+   ```
+
+## 💻 Usage
+
+`hack_scan` provides an interactive entry point. It accepts either a single target IP address or a path to a plaintext file containing an IP list (one entry per line).
+
+```bash
 python3 hack_scan.py
 ```
 
----
+> ⚠️ **Rate Limiting Notice:** Certain API providers (particularly ZoomEye) enforce strict rate limits or regional request blocks on free tier allocations. Ensure your subscription tier covers the volume of queried target hosts.
 
 ## 💎 Support the Project
 
